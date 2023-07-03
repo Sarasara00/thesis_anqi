@@ -1,0 +1,33 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SelectLayerByLocationPlainRegionObjects> ;
+            ns1:input1 _:N05feb3f9ac49433fb715534f700c9f0f ;
+            ns1:input2 _:Nf017c55156ea449a90d700017d64208d ;
+            ns1:output _:Nc3ac8a0241164c83b059afebb04922ec ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ClipObject2Object> ;
+            ns1:input1 _:Nf017c55156ea449a90d700017d64208d ;
+            ns1:input2 _:Nc3ac8a0241164c83b059afebb04922ec ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+                    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" ] ] ;
+    ns1:source _:N05feb3f9ac49433fb715534f700c9f0f,
+        _:Nf017c55156ea449a90d700017d64208d .
+
+_:N05feb3f9ac49433fb715534f700c9f0f a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainOrdinalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PointA> ;
+    rdfs:label "ObjectQ, PointA, PlainOrdinalA" .
+
+_:Nc3ac8a0241164c83b059afebb04922ec a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainNominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, PlainNominalA" .
+
+_:Nf017c55156ea449a90d700017d64208d a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" .
+

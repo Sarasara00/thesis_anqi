@@ -1,0 +1,32 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ZonalStatisticsMeanRatio> ;
+            ns1:input1 _:N07c69c47b91c46348bbc6336582950e2 ;
+            ns1:input2 _:N590dd6c5198c427f814c92bf48764cfa ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#IRA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+                    rdfs:label "ObjectQ, PlainVectorRegionA, IRA" ] ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#KernelDensity> ;
+            ns1:input1 _:N42a965d16b12474fb1f59acc43ac97e6 ;
+            ns1:output _:N07c69c47b91c46348bbc6336582950e2 ] ;
+    ns1:source _:N42a965d16b12474fb1f59acc43ac97e6,
+        _:N590dd6c5198c427f814c92bf48764cfa .
+
+_:N07c69c47b91c46348bbc6336582950e2 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#FieldQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainRatioA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#RasterA> ;
+    rdfs:label "FieldQ, RasterA, PlainRatioA" .
+
+_:N42a965d16b12474fb1f59acc43ac97e6 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PointA> ;
+    rdfs:label "ObjectQ, PointA, ERA" .
+
+_:N590dd6c5198c427f814c92bf48764cfa a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#NominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, NominalA" .
+

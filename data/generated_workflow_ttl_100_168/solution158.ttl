@@ -1,0 +1,24 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SelectLayerByLocationTessObject> ;
+            ns1:input1 _:N9981a50f0cd04d1a888d2daed5aa3968 ;
+            ns1:input2 _:N6d6cdfe77513401aaf906f001c077c1d ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+                    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" ] ] ;
+    ns1:source _:N6d6cdfe77513401aaf906f001c077c1d,
+        _:N9981a50f0cd04d1a888d2daed5aa3968 .
+
+_:N6d6cdfe77513401aaf906f001c077c1d a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" .
+
+_:N9981a50f0cd04d1a888d2daed5aa3968 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, ERA" .
+

@@ -1,0 +1,32 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SelectLayerByAttributeTessObjects2> ;
+            ns1:input1 _:Nfb0a1d8c952845e097663f4b8cd6163b ;
+            ns1:output _:N9d4cefc25be34b258f022eebe2d844eb ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ClipObject2Object> ;
+            ns1:input1 _:Nd5b2dfcf45414a8cbfdec30a871c7aed ;
+            ns1:input2 _:N9d4cefc25be34b258f022eebe2d844eb ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+                    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" ] ] ;
+    ns1:source _:Nd5b2dfcf45414a8cbfdec30a871c7aed,
+        _:Nfb0a1d8c952845e097663f4b8cd6163b .
+
+_:N9d4cefc25be34b258f022eebe2d844eb a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainNominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, PlainNominalA" .
+
+_:Nd5b2dfcf45414a8cbfdec30a871c7aed a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" .
+
+_:Nfb0a1d8c952845e097663f4b8cd6163b a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainIntervalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, PlainIntervalA" .
+

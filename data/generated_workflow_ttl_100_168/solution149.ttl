@@ -1,0 +1,32 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SelectLayerByAttributeTessObjects2> ;
+            ns1:input1 _:N3ede52b0726542b69b32520a023c052b ;
+            ns1:output _:N878e354e6b5746378891d93aa912b09e ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ClipObject2Object> ;
+            ns1:input1 _:Naf0a70ce5d454b2598bbe561d2a90435 ;
+            ns1:input2 _:N878e354e6b5746378891d93aa912b09e ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+                    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" ] ] ;
+    ns1:source _:N3ede52b0726542b69b32520a023c052b,
+        _:Naf0a70ce5d454b2598bbe561d2a90435 .
+
+_:N3ede52b0726542b69b32520a023c052b a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainOrdinalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, PlainOrdinalA" .
+
+_:N878e354e6b5746378891d93aa912b09e a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainNominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, PlainNominalA" .
+
+_:Naf0a70ce5d454b2598bbe561d2a90435 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" .
+
