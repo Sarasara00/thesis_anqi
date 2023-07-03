@@ -1,0 +1,24 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinCountTess> ;
+            ns1:input1 _:Na079e2bfd79a423ab3e0a289340dda39 ;
+            ns1:input2 _:N1968db0b58cd45d9a8ef18e2c733e82f ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, CountA" ] ] ;
+    ns1:source _:N1968db0b58cd45d9a8ef18e2c733e82f,
+        _:Na079e2bfd79a423ab3e0a289340dda39 .
+
+_:N1968db0b58cd45d9a8ef18e2c733e82f a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainRatioA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PointA> ;
+    rdfs:label "ObjectQ, PointA, PlainRatioA" .
+
+_:Na079e2bfd79a423ab3e0a289340dda39 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CyclicA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, CyclicA" .
+

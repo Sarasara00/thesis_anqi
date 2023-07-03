@@ -1,0 +1,41 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinCountTess> ;
+            ns1:input1 _:Naa79ec95a12e4648ba97bc7e0fa0ccf8 ;
+            ns1:input2 _:N4591f2f1c31545fda99ea141ec4e7129 ;
+            ns1:output _:N99ccb3c611fa48c797bd834745691f10 ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#IntersectDissolveField2Object> ;
+            ns1:input1 _:Naa79ec95a12e4648ba97bc7e0fa0ccf8 ;
+            ns1:input2 _:N7122f43f5f7f4914bca3bc970fbc01f8 ;
+            ns1:output _:N4591f2f1c31545fda99ea141ec4e7129 ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ComputeCountDensityonObject> ;
+            ns1:input1 _:N99ccb3c611fa48c797bd834745691f10 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#IRA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, IRA" ] ] ;
+    ns1:source _:N7122f43f5f7f4914bca3bc970fbc01f8,
+        _:Naa79ec95a12e4648ba97bc7e0fa0ccf8 .
+
+_:N4591f2f1c31545fda99ea141ec4e7129 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorRegionA> ;
+    rdfs:label "ObjectQ, VectorRegionA, ERA" .
+
+_:N7122f43f5f7f4914bca3bc970fbc01f8 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#FieldQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainNominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "FieldQ, PlainVectorRegionA, PlainNominalA" .
+
+_:N99ccb3c611fa48c797bd834745691f10 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, CountA" .
+
+_:Naa79ec95a12e4648ba97bc7e0fa0ccf8 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#NominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, NominalA" .
+

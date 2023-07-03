@@ -1,0 +1,32 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ComputeCountDensityonObject> ;
+            ns1:input1 _:Nd4669c83ecc640aba0394c4f21abdbb0 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#IRA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, IRA" ] ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinCountTess> ;
+            ns1:input1 _:Nb09b53de362c42c8a304dc60ef11cb44 ;
+            ns1:input2 _:N14096af14434450caf5fcc635441ecd3 ;
+            ns1:output _:Nd4669c83ecc640aba0394c4f21abdbb0 ] ;
+    ns1:source _:N14096af14434450caf5fcc635441ecd3,
+        _:Nb09b53de362c42c8a304dc60ef11cb44 .
+
+_:N14096af14434450caf5fcc635441ecd3 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainOrdinalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, PlainOrdinalA" .
+
+_:Nb09b53de362c42c8a304dc60ef11cb44 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#NominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, NominalA" .
+
+_:Nd4669c83ecc640aba0394c4f21abdbb0 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, CountA" .
+

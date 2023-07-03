@@ -1,0 +1,33 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinSumTessRatio> ;
+            ns1:input1 _:N2aa624948fa34fff93bc2026cb749d8e ;
+            ns1:input2 _:N411391700a3b4fed81f7e324379e50e6 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, ERA" ] ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ZonalStatisticsMeanInterval> ;
+            ns1:input1 _:N411391700a3b4fed81f7e324379e50e6 ;
+            ns1:input2 _:Nff40119dcf3744e7ae28fdd402bc1c6e ;
+            ns1:output _:N2aa624948fa34fff93bc2026cb749d8e ] ;
+    ns1:source _:N411391700a3b4fed81f7e324379e50e6,
+        _:Nff40119dcf3744e7ae28fdd402bc1c6e .
+
+_:N2aa624948fa34fff93bc2026cb749d8e a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainIntervalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, PlainIntervalA" .
+
+_:Nff40119dcf3744e7ae28fdd402bc1c6e a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#FieldQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainIntervalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#RasterA> ;
+    rdfs:label "FieldQ, RasterA, PlainIntervalA" .
+
+_:N411391700a3b4fed81f7e324379e50e6 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, ERA" .
+

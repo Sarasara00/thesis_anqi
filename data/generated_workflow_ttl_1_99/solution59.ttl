@@ -1,0 +1,41 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#KrigingInterval> ;
+            ns1:input1 _:Nca2b004e70134dce8afd766f73489a9e ;
+            ns1:output _:N98e7df47c814439a876a47b6b65d85f0 ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ZonalStatisticsMeanInterval> ;
+            ns1:input1 _:N93f84325e8b44af6867550fc8069c8ab ;
+            ns1:input2 _:N98e7df47c814439a876a47b6b65d85f0 ;
+            ns1:output _:N55c73071e07c40b481a700e6e9175f87 ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinCountTess> ;
+            ns1:input1 _:N93f84325e8b44af6867550fc8069c8ab ;
+            ns1:input2 _:N55c73071e07c40b481a700e6e9175f87 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, CountA" ] ] ;
+    ns1:source _:N93f84325e8b44af6867550fc8069c8ab,
+        _:Nca2b004e70134dce8afd766f73489a9e .
+
+_:N55c73071e07c40b481a700e6e9175f87 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainIntervalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, PlainIntervalA" .
+
+_:N98e7df47c814439a876a47b6b65d85f0 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#FieldQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainIntervalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#RasterA> ;
+    rdfs:label "FieldQ, RasterA, PlainIntervalA" .
+
+_:Nca2b004e70134dce8afd766f73489a9e a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#FieldQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainIntervalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PointA> ;
+    rdfs:label "FieldQ, PointA, PlainIntervalA" .
+
+_:N93f84325e8b44af6867550fc8069c8ab a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#NominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, NominalA" .
+

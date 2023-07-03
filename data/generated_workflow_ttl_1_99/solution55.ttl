@@ -1,0 +1,32 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SummarizeWithin> ;
+            ns1:input1 _:N8410a01f1d81407cbd09d055e3129feb ;
+            ns1:input2 _:N12a798fb2fc44bc3b12856354573dda8 ;
+            ns1:output _:N6ea51d4f5dfd4069819fb7bd5c15c536 ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ComputeCountDensityonObject> ;
+            ns1:input1 _:N6ea51d4f5dfd4069819fb7bd5c15c536 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#IRA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, IRA" ] ] ;
+    ns1:source _:N12a798fb2fc44bc3b12856354573dda8,
+        _:N8410a01f1d81407cbd09d055e3129feb .
+
+_:N12a798fb2fc44bc3b12856354573dda8 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainRatioA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PointA> ;
+    rdfs:label "ObjectQ, PointA, PlainRatioA" .
+
+_:N6ea51d4f5dfd4069819fb7bd5c15c536 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, CountA" .
+
+_:N8410a01f1d81407cbd09d055e3129feb a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#BooleanA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, BooleanA" .
+
