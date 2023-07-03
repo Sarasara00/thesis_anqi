@@ -1,0 +1,105 @@
+# @Author(s): Eric Top, Enkhbold Nyamsuren, Simon Scheider, 
+@prefix ccd: <http://geographicknowledge.de/vocab/CoreConceptData.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tools: <https://quangis.github.io/tool#> .
+@prefix wf: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+
+[] wf:applicationOf [ a wf:Workflow ;
+            rdfs:label "wfwalk_landusemix" ;
+            wf:edge [ wf:applicationOf tools:SummarizeWithin ;
+                    wf:input1 _:retail_area ;
+                    wf:input2 _:Amsterdam_buurt ;
+                    wf:output _:BRdRaRe ],
+                [ wf:applicationOf tools:SummarizeWithin ;
+                    wf:input1 _:office_area ;
+                    wf:input2 _:Amsterdam_buurt ;
+                    wf:output _:BRdRaReOf ],
+                [ wf:applicationOf tools:SummarizeWithin ;
+                    wf:input1 _:institution_area ;
+                    wf:input2 _:Amsterdam_buurt ;
+                    wf:output _:BRdRaReOfIn ],
+                [ wf:applicationOf tools:SummarizeWithin ;
+                    wf:input1 _:recreational_area ;
+                    wf:input2 _:Amsterdam_buurt ;
+                    wf:output _:BRdRaReOfInRec ],
+                _:n24,
+                _:n25,
+                [ wf:applicationOf tools:SelectLayerByAttribute ;
+                    wf:inputx _:Amsterdam_land ;
+                    wf:output _:retail_area ],
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "CalculateDiversity4onObjectVector" ;
+                            wf:edge _:n24,
+                                _:n25 ] ;
+                    wf:input1 _:BRdRaRe ;
+                    wf:input2 _:BRdRaReOf ;
+                    wf:input3 _:BRdRaReOfIn ;
+                    wf:input4 _:BRdRaReOfInRec ;
+                    wf:output _:BRdRaReOfInRec3 ],
+                [ wf:applicationOf tools:SelectLayerByAttribute ;
+                    wf:inputx _:Amsterdam_land ;
+                    wf:output _:office_area ],
+                [ wf:applicationOf tools:SelectLayerByAttribute ;
+                    wf:inputx _:Amsterdam_land ;
+                    wf:output _:institution_area ],
+                [ wf:applicationOf tools:SelectLayerByAttribute ;
+                    wf:inputx _:Amsterdam_land ;
+                    wf:output _:recreational_area ] ] ;
+    wf:inputx _:Amsterdam_buurt,
+        _:Amsterdam_land ;
+    wf:output _:BRdRaReOfInRec3 .
+
+_:BRdRaReOfInRec2 a ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:institution_area a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:PlainVectorRegionA .
+
+_:n24 wf:applicationOf tools:AddField ;
+    wf:inputx _:BRdRaReOfInRec ;
+    wf:output _:BRdRaReOfInRec2 .
+
+_:n25 wf:applicationOf tools:CalculateField ;
+    wf:input1 _:BRdRaRe ;
+    wf:input2 _:BRdRaReOf ;
+    wf:input3 _:BRdRaReOfIn ;
+    wf:input4 _:BRdRaReOfInRec2 ;
+    wf:output _:BRdRaReOfInRec3 .
+
+_:office_area a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:PlainVectorRegionA .
+
+_:recreational_area a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:PlainVectorRegionA .
+
+_:retail_area a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:PlainVectorRegionA .
+
+_:BRdRaRe a ccd:ObjectQ,
+        ccd:RatioA,
+        ccd:VectorTessellationA .
+
+_:BRdRaReOf a ccd:ObjectQ,
+        ccd:RatioA,
+        ccd:VectorTessellationA .
+
+_:BRdRaReOfIn a ccd:ObjectQ,
+        ccd:RatioA,
+        ccd:VectorTessellationA .
+
+_:BRdRaReOfInRec a ccd:ObjectQ,
+        ccd:RatioA,
+        ccd:VectorTessellationA .
+
+_:Amsterdam_buurt a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:Amsterdam_land a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:VectorTessellationA .
+

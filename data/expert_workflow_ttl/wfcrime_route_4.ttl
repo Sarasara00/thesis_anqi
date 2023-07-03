@@ -1,0 +1,87 @@
+# @Author(s): Eric Top, Haiqi Xu, Simon Scheider, 
+@prefix ccd: <http://geographicknowledge.de/vocab/CoreConceptData.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tools: <https://quangis.github.io/tool#> .
+@prefix wf: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+
+[] wf:applicationOf [ a wf:Workflow ;
+            rdfs:label "wfcrime_route" ;
+            wf:edge _:n10,
+                _:n12,
+                _:n13,
+                _:n16,
+                _:n2,
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "CreateAndBuildNetwork" ;
+                            wf:edge _:n2,
+                                _:n8 ] ;
+                    wf:inputx _:roads ;
+                    wf:output _:network ],
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "RouteAnalysis" ;
+                            wf:edge _:n10,
+                                _:n12,
+                                _:n13,
+                                _:n16 ] ;
+                    wf:input1 _:network ;
+                    wf:input2 _:home ;
+                    wf:input3 _:work_sport_store_locations ;
+                    wf:output _:route_analysis_layer_solved ],
+                _:n8 ] ;
+    wf:inputx _:home,
+        _:roads,
+        _:work_sport_store_locations ;
+    wf:output _:route_analysis_layer_solved .
+
+_:n10 wf:applicationOf tools:MakeRouteAnalysisLayer ;
+    wf:inputx _:network ;
+    wf:output _:route_analysis_layer .
+
+_:n12 wf:applicationOf tools:AddLocations ;
+    wf:input1 _:route_analysis_layer ;
+    wf:input2 _:home ;
+    wf:output _:route_analysis_layer_home .
+
+_:n13 wf:applicationOf tools:AddLocations ;
+    wf:input1 _:route_analysis_layer_home ;
+    wf:input2 _:work_sport_store_locations ;
+    wf:output _:route_analysis_layer_all .
+
+_:n16 wf:applicationOf tools:Solve ;
+    wf:inputx _:route_analysis_layer_all ;
+    wf:output _:route_analysis_layer_solved .
+
+_:n2 wf:applicationOf tools:CreateNetworkDataset ;
+    wf:inputx _:roads ;
+    wf:output _:network_dataset .
+
+_:n8 wf:applicationOf tools:BuildNetwork ;
+    wf:inputx _:network_dataset ;
+    wf:output _:network .
+
+_:network_dataset a ccd:LineA,
+        ccd:NetworkQ .
+
+_:route_analysis_layer a ccd:LineA,
+        ccd:NetworkQ .
+
+_:route_analysis_layer_all a ccd:LineA,
+        ccd:NetworkQ .
+
+_:route_analysis_layer_home a ccd:LineA,
+        ccd:NetworkQ .
+
+_:home a ccd:ObjectQ,
+        ccd:PointA .
+
+_:roads a ccd:LineA,
+        ccd:ObjectQ,
+        ccd:RatioA .
+
+_:work_sport_store_locations a ccd:ObjectQ,
+        ccd:PointA .
+
+_:network a ccd:LineA,
+        ccd:NetworkQ,
+        ccd:RatioA .
+
