@@ -1,0 +1,1 @@
+{"edges": [[4, 3], [2, 3], [2, 1]], "features": {"1": "FieldQ_RasterA_ObjectQ_PlainVectorRegionA+ObjectQ_PlainVectorRegionA", "2": "ObjectQ_PointA+FieldQ_RasterA", "3": "ObjectQ_PointA+ObjectQ_PointA", "4": "ObjectQ_VectorTessellationA+ObjectQ_PointA"}}
