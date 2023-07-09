@@ -1,0 +1,32 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SelectLayerByAttributeTessObjects2> ;
+            ns1:input1 _:N1a831937510f41e789ec9d8099a3210b ;
+            ns1:output _:Nfb383dc0991a4d02be737b955b778cc7 ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#ClipObject2Object> ;
+            ns1:input1 _:N4d834f03f2914216aac8dec37a732fe4 ;
+            ns1:input2 _:Nfb383dc0991a4d02be737b955b778cc7 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+                    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" ] ] ;
+    ns1:source _:N1a831937510f41e789ec9d8099a3210b,
+        _:N4d834f03f2914216aac8dec37a732fe4 .
+
+_:N1a831937510f41e789ec9d8099a3210b a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, ERA" .
+
+_:N4d834f03f2914216aac8dec37a732fe4 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#CountA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, CountA" .
+
+_:Nfb383dc0991a4d02be737b955b778cc7 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainNominalA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainVectorRegionA> ;
+    rdfs:label "ObjectQ, PlainVectorRegionA, PlainNominalA" .
+

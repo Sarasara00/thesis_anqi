@@ -1,0 +1,33 @@
+@prefix ns1: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.com/#solution1> a ns1:Workflow ;
+    ns1:edge [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinSumTessRatio> ;
+            ns1:input1 _:N6235efff8db546e183eddd0a0f35bae1 ;
+            ns1:input2 _:N7ff81067e8e54c0ca879c8d815939586 ;
+            ns1:output [ a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+                        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+                    rdfs:label "ObjectQ, VectorTessellationA, ERA" ] ],
+        [ ns1:applicationOf <https://quangis.github.io/tool/abstract#SpatialJoinMeanTessRatio> ;
+            ns1:input1 _:N36e64f4eae394f90aac5c846388dc93a ;
+            ns1:input2 _:N7ff81067e8e54c0ca879c8d815939586 ;
+            ns1:output _:N6235efff8db546e183eddd0a0f35bae1 ] ;
+    ns1:source _:N36e64f4eae394f90aac5c846388dc93a,
+        _:N7ff81067e8e54c0ca879c8d815939586 .
+
+_:N36e64f4eae394f90aac5c846388dc93a a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#IRA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PointA> ;
+    rdfs:label "ObjectQ, PointA, IRA" .
+
+_:N6235efff8db546e183eddd0a0f35bae1 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#PlainRatioA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, PlainRatioA" .
+
+_:N7ff81067e8e54c0ca879c8d815939586 a <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ERA>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#ObjectQ>,
+        <http://geographicknowledge.de/vocab/CoreConceptData.rdf#VectorTessellationA> ;
+    rdfs:label "ObjectQ, VectorTessellationA, ERA" .
+

@@ -1,0 +1,71 @@
+# @Author(s): Eric Top, Haiqi Xu, Simon Scheider, 
+@prefix ccd: <http://geographicknowledge.de/vocab/CoreConceptData.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tools: <https://quangis.github.io/tool#> .
+@prefix wf: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+
+[] wf:applicationOf [ a wf:Workflow ;
+            rdfs:label "wfcrime_prep" ;
+            wf:edge [ wf:applicationOf tools:CreateRandomPoints ;
+                    wf:inputx _:supermarket_area_points ;
+                    wf:output _:supermarket ],
+                [ wf:applicationOf tools:Merge ;
+                    wf:input1 _:office ;
+                    wf:input2 _:sport ;
+                    wf:input3 _:supermarket ;
+                    wf:output _:work_sport_store_locations ],
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "makePointObjects" ;
+                            wf:edge _:n5,
+                                _:n6 ] ;
+                    wf:inputx _:office_area ;
+                    wf:output _:office ],
+                [ wf:applicationOf tools:FeatureClassToFeatureClass ;
+                    wf:inputx _:function_mix ;
+                    wf:output _:office_area ],
+                _:n5,
+                _:n6,
+                [ wf:applicationOf tools:CreateRandomPoints ;
+                    wf:inputx _:sport_area_points ;
+                    wf:output _:sport ] ] ;
+    wf:inputx _:function_mix,
+        _:sport_area_points,
+        _:supermarket_area_points ;
+    wf:output _:work_sport_store_locations .
+
+_:function_mix a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PlainVectorRegionA .
+
+_:n5 wf:applicationOf tools:FeatureToPoint ;
+    wf:inputx _:office_area ;
+    wf:output _:office_area_points .
+
+_:n6 wf:applicationOf tools:CreateRandomPoints ;
+    wf:inputx _:office_area_points ;
+    wf:output _:office .
+
+_:sport a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+
+_:sport_area_points a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+
+_:supermarket a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+
+_:supermarket_area_points a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+
+_:office a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+
+_:office_area a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PlainVectorRegionA .
+

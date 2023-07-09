@@ -1,0 +1,89 @@
+# @Author(s): Eric Top, Enkhbold Nyamsuren, Simon Scheider, 
+@prefix ccd: <http://geographicknowledge.de/vocab/CoreConceptData.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tools: <https://quangis.github.io/tool#> .
+@prefix wf: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+
+[] wf:applicationOf [ a wf:Workflow ;
+            rdfs:label "wfwalk_intersectiondensity" ;
+            wf:edge _:n1,
+                _:n22,
+                _:n24,
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "GenerateIntersections" ;
+                            wf:edge _:n1,
+                                _:n22,
+                                _:n24 ] ;
+                    wf:inputx _:streets ;
+                    wf:output _:true_intersection ],
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "CalculateObjectVectorDensity" ;
+                            wf:edge _:n6,
+                                _:n8,
+                                _:n9 ] ;
+                    wf:inputx _:BRdRaReOfInRecInter ;
+                    wf:output _:BRdRaReOfInRecInter4 ],
+                [ wf:applicationOf tools:SummarizeWithin ;
+                    wf:input1 _:true_intersection ;
+                    wf:input2 _:buurten ;
+                    wf:output _:BRdRaReOfInRecInter ],
+                _:n6,
+                _:n8,
+                _:n9 ] ;
+    wf:inputx _:buurten,
+        _:streets ;
+    wf:output _:BRdRaReOfInRecInter4 .
+
+_:BRdRaReOfInRecInter2 a ccd:ObjectQ,
+        ccd:RatioA,
+        ccd:VectorTessellationA .
+
+_:BRdRaReOfInRecInter3 a ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:buurten a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:endpoints a ccd:PointA .
+
+_:intersections a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+
+_:n1 wf:applicationOf tools:FeatureVerticesToPoints ;
+    wf:inputx _:streets ;
+    wf:output _:endpoints .
+
+_:n22 wf:applicationOf tools:CollectEvents ;
+    wf:inputx _:endpoints ;
+    wf:output _:intersections .
+
+_:n24 wf:applicationOf tools:SelectLayerByAttribute ;
+    wf:inputx _:intersections ;
+    wf:output _:true_intersection .
+
+_:n6 wf:applicationOf tools:AddGeometryAttributes ;
+    wf:inputx _:BRdRaReOfInRecInter ;
+    wf:output _:BRdRaReOfInRecInter2 .
+
+_:n8 wf:applicationOf tools:AddField ;
+    wf:inputx _:BRdRaReOfInRecInter2 ;
+    wf:output _:BRdRaReOfInRecInter3 .
+
+_:n9 wf:applicationOf tools:CalculateField ;
+    wf:inputx _:BRdRaReOfInRecInter3 ;
+    wf:output _:BRdRaReOfInRecInter4 .
+
+_:BRdRaReOfInRecInter a ccd:CountA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:streets a ccd:LineA,
+        ccd:NominalA,
+        ccd:ObjectQ .
+
+_:true_intersection a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:PointA .
+

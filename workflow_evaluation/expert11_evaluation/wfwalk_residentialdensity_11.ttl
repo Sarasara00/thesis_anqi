@@ -1,0 +1,106 @@
+# @Author(s): Eric Top, Enkhbold Nyamsuren, Simon Scheider, 
+@prefix ccd: <http://geographicknowledge.de/vocab/CoreConceptData.rdf#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tools: <https://quangis.github.io/tool#> .
+@prefix wf: <http://geographicknowledge.de/vocab/Workflow.rdf#> .
+
+[] wf:applicationOf [ a wf:Workflow ;
+            rdfs:label "wfwalk_residentialdensity" ;
+            wf:edge _:n0,
+                _:n11,
+                _:n13,
+                [ wf:applicationOf tools:SelectLayerByAttribute ;
+                    wf:inputx _:Amsterdam_land ;
+                    wf:output _:residential_area ],
+                [ wf:applicationOf tools:SummarizeWithin ;
+                    wf:input1 _:residential_area ;
+                    wf:input2 _:buurten ;
+                    wf:output _:buurten_HH_RA ],
+                _:n21,
+                _:n22,
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "LoadCountAmounts" ;
+                            wf:edge _:n0,
+                                _:n11,
+                                _:n13,
+                                _:n6 ] ;
+                    wf:input1 _:households ;
+                    wf:input2 _:Amsterdam_buurt ;
+                    wf:output _:buurten_HH ],
+                [ wf:applicationOf [ a wf:Workflow ;
+                            rdfs:label "CalculateObjectVectorAmountRatio" ;
+                            wf:edge _:n21,
+                                _:n22 ] ;
+                    wf:input1 _:buurten_HH ;
+                    wf:input2 _:buurten_HH_RA ;
+                    wf:output _:buurten_res_dens ],
+                _:n6 ] ;
+    wf:inputx _:Amsterdam_buurt,
+        _:Amsterdam_land,
+        _:households ;
+    wf:output _:buurten_res_dens .
+
+_:Amsterdam_land a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:VectorTessellationA .
+
+_:buurten_HH_RA2 a ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:buurten_HH_Temp a ccd:CountA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:buurten_HH_Temp2 a ccd:CountA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:n0 wf:applicationOf tools:CopyFeatures ;
+    wf:inputx _:Amsterdam_buurt ;
+    wf:output _:buurten .
+
+_:n11 wf:applicationOf tools:AddField ;
+    wf:inputx _:buurten_HH_Temp ;
+    wf:output _:buurten_HH_Temp2 .
+
+_:n13 wf:applicationOf tools:CalculateField ;
+    wf:inputx _:buurten_HH_Temp2 ;
+    wf:output _:buurten_HH .
+
+_:n21 wf:applicationOf tools:AddField ;
+    wf:inputx _:buurten_HH_RA ;
+    wf:output _:buurten_HH_RA2 .
+
+_:n22 wf:applicationOf tools:CalculateField ;
+    wf:input1 _:buurten_HH ;
+    wf:input2 _:buurten_HH_RA2 ;
+    wf:output _:buurten_res_dens .
+
+_:n6 wf:applicationOf tools:JoinField ;
+    wf:input1 _:households ;
+    wf:input2 _:buurten ;
+    wf:output _:buurten_HH_Temp .
+
+_:residential_area a ccd:FieldQ,
+        ccd:NominalA,
+        ccd:PlainVectorRegionA .
+
+_:Amsterdam_buurt a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:buurten a ccd:NominalA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
+_:buurten_HH_RA a ccd:ObjectQ,
+        ccd:RatioA,
+        ccd:VectorTessellationA .
+
+_:households a ccd:CountA,
+        ccd:ObjectQ .
+
+_:buurten_HH a ccd:CountA,
+        ccd:ObjectQ,
+        ccd:VectorTessellationA .
+
